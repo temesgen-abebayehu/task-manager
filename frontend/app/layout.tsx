@@ -33,7 +33,7 @@ export default function RootLayout({
         <header className="sticky top-0 z-50 bg-white border-b border-gray-200">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex justify-between items-center h-16">
-              <Link href="/tasks" className="flex items-center gap-2">
+              <Link href="/" className="flex items-center gap-2">
                 <div className="w-8 h-8 bg-gradient-to-br from-blue-500 to-blue-600 rounded-lg flex items-center justify-center">
                   <span className="text-white font-bold text-lg">✓</span>
                 </div>
@@ -66,7 +66,7 @@ export default function RootLayout({
         <footer className="bg-white border-t border-gray-200 mt-auto">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
             <p className="text-center text-gray-500 text-xs">
-              © {new Date().getFullYear()} TaskFlow. Built with Next.js & NestJS.
+              © {new Date().getFullYear()} TaskFlow. All Right Reserved.
             </p>
           </div>
         </footer>
