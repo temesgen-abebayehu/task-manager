@@ -1,4 +1,4 @@
-import { Controller, Post, Body, Get, Query, Param, Patch } from '@nestjs/common';
+import { Controller, Post, Body, Get, Query, Param, Patch, Delete, HttpCode, HttpStatus } from '@nestjs/common';
 import { TasksService } from './tasks.service';
 import { CreateTaskDto } from './dto/create-task.dto';
 import { UpdateTaskDto } from './dto/update-task.dto';
@@ -26,5 +26,16 @@ export class TasksController {
   @Patch(':id')
   update(@Param('id') id: string, @Body() updateTaskDto: UpdateTaskDto) {
     return this.tasksService.update(id, updateTaskDto);
+  }
+
+  @Delete(':id')
+  @HttpCode(HttpStatus.NO_CONTENT)
+  remove(@Param('id') id: string) {
+    return this.tasksService.remove(id);
+  }
+
+  @Patch(':id/toggle-complete')
+  toggleComplete(@Param('id') id: string) {
+    return this.tasksService.toggleComplete(id);
   }
 }

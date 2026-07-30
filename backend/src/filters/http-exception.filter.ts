@@ -1,1 +1,48 @@
-// Global exception filter will be implemented in Phase 2.9
+import {
+  ExceptionFilter,
+  Catch,
+  ArgumentsHost,
+  HttpException,
+  HttpStatus,
+} from '@nestjs/common';
+import { Request, Response } from 'express';
+
+@Catch()
+export class HttpExceptionFilter implements ExceptionFilter {
+  catch(exception: unknown, host: ArgumentsHost) {
+    const ctx = host.switchToHttp();
+    const response = ctx.getResponse<Response>();
+    const request = ctx.getRequest<Request>();
+
+    let status = HttpStatus.INTERNAL_SERVER_ERROR;
+    let message: string | string[] = 'Internal server error';
+
+    if (exception instanceof HttpException) {
+      status = exception.getStatus();
+      const exceptionResponse = exception.getResponse();
+
+      if (typeof exceptionResponse === 'string') {
+        message = exceptionResponse;
+      } else if (typeof exceptionResponse === 'object' && exceptionResponse !== null) {
+        message = (exceptionResponse as any).message || message;
+      }
+    } else if (exception instanceof Error) {
+      message = exception.message;
+    }
+
+    const errorResponse = {
+      statusCode: status,
+      message,
+      timestamp: new Date().toISOString(),
+      path: request.url,
+    };
+
+    // Log error for debugging (in production, use proper logging service)
+    if (status === HttpStatus.INTERNAL_SERVER_ERROR) {
+      console.error('Internal Server Error:', exception);
+    }
+
+    response.status(status).json(errorResponse);
+  }
+}
+

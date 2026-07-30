@@ -60,4 +60,24 @@ export class TasksService {
       },
     });
   }
+
+  async remove(id: string): Promise<void> {
+    // Check if task exists
+    await this.findOne(id);
+
+    await this.prisma.task.delete({
+      where: { id },
+    });
+  }
+
+  async toggleComplete(id: string): Promise<Task> {
+    const task = await this.findOne(id);
+
+    const newStatus = task.status === TaskStatus.DONE ? TaskStatus.TO_DO : TaskStatus.DONE;
+
+    return this.prisma.task.update({
+      where: { id },
+      data: { status: newStatus },
+    });
+  }
 }
