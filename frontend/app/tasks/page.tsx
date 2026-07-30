@@ -43,26 +43,20 @@ export default function TasksPage() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {/* Header */}
         <div className="mb-8">
-          <h1 className="text-3xl font-bold text-gray-900 mb-2">
-            Task Manager
+          <h1 className="text-4xl font-bold text-gray-900 mb-2">
+            My Tasks
           </h1>
-          <p className="text-gray-600">
-            Manage your tasks efficiently and stay organized
+          <p className="text-lg text-gray-600">
+            Stay organized and get things done
           </p>
         </div>
 
-        {/* Actions Bar */}
-        <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-6">
+        {/* Filter Bar */}
+        <div className="mb-8">
           <StatusFilter
             selectedStatus={selectedStatus}
             onStatusChange={handleStatusChange}
           />
-
-          <Link href="/tasks/new">
-            <button className="px-6 py-3 bg-blue-600 text-white rounded-lg font-medium hover:bg-blue-700 transition-colors">
-              + Create New Task
-            </button>
-          </Link>
         </div>
 
         {/* Loading State */}

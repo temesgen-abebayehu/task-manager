@@ -102,7 +102,7 @@ export default function TaskForm({
       <div>
         <label
           htmlFor="title"
-          className="block text-sm font-medium text-gray-700 mb-2"
+          className="block text-sm font-semibold text-gray-900 mb-2"
         >
           Title <span className="text-red-500">*</span>
         </label>
@@ -111,7 +111,7 @@ export default function TaskForm({
           id="title"
           value={formData.title}
           onChange={(e) => setFormData({ ...formData, title: e.target.value })}
-          className={`w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent ${
+          className={`w-full px-4 py-3 text-gray-900 bg-white border rounded-lg shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all ${
             errors.title ? 'border-red-500' : 'border-gray-300'
           }`}
           placeholder="Enter task title"
@@ -126,7 +126,7 @@ export default function TaskForm({
       <div>
         <label
           htmlFor="description"
-          className="block text-sm font-medium text-gray-700 mb-2"
+          className="block text-sm font-semibold text-gray-900 mb-2"
         >
           Description
         </label>
@@ -136,9 +136,9 @@ export default function TaskForm({
           onChange={(e) =>
             setFormData({ ...formData, description: e.target.value })
           }
-          rows={4}
-          className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-          placeholder="Enter task description (optional)"
+          rows={5}
+          className="w-full px-4 py-3 text-gray-900 bg-white border border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all resize-none"
+          placeholder="Add a more detailed description (optional)"
           disabled={loading}
         />
       </div>
@@ -147,7 +147,7 @@ export default function TaskForm({
       <div>
         <label
           htmlFor="status"
-          className="block text-sm font-medium text-gray-700 mb-2"
+          className="block text-sm font-semibold text-gray-900 mb-2"
         >
           Status
         </label>
@@ -157,7 +157,7 @@ export default function TaskForm({
           onChange={(e) =>
             setFormData({ ...formData, status: e.target.value as TaskStatus })
           }
-          className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+          className="w-full px-4 py-3 text-gray-900 bg-white border border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all"
           disabled={loading}
         >
           <option value={TaskStatus.TO_DO}>To Do</option>
@@ -170,7 +170,7 @@ export default function TaskForm({
       <div>
         <label
           htmlFor="dueDate"
-          className="block text-sm font-medium text-gray-700 mb-2"
+          className="block text-sm font-semibold text-gray-900 mb-2"
         >
           Due Date
         </label>
@@ -181,7 +181,7 @@ export default function TaskForm({
           onChange={(e) =>
             setFormData({ ...formData, dueDate: e.target.value })
           }
-          className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+          className="w-full px-4 py-3 text-gray-900 bg-white border border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all"
           disabled={loading}
         />
       </div>

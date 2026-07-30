@@ -70,16 +70,19 @@ export default function EditTaskPage() {
         <div className="mb-8">
           <Link
             href={`/tasks/${taskId}`}
-            className="text-blue-600 hover:text-blue-700 font-medium mb-4 inline-block"
+            className="inline-flex items-center gap-2 text-blue-600 hover:text-blue-700 font-medium mb-4"
           >
-            ← Back to Task Details
+            <svg className="w-5 h-5" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" stroke="currentColor">
+              <path d="M15 19l-7-7 7-7"></path>
+            </svg>
+            Back to Task Details
           </Link>
-          <h1 className="text-3xl font-bold text-gray-900 mb-2">Edit Task</h1>
-          <p className="text-gray-600">Update the task details below</p>
+          <h1 className="text-4xl font-bold text-gray-900 mb-3">Edit Task</h1>
+          <p className="text-lg text-gray-600">Update the details below</p>
         </div>
 
         {/* Form */}
-        <div className="bg-white rounded-lg shadow-md p-6">
+        <div className="bg-white rounded-xl shadow-lg p-8">
           <TaskForm
             mode="edit"
             initialValues={{
