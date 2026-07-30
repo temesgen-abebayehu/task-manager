@@ -108,7 +108,7 @@ export default function TaskCard({ task, onTaskChange }: TaskCardProps) {
         <button
           onClick={handleToggleComplete}
           disabled={isToggling}
-          className={`px-3 py-1 rounded text-sm font-medium transition-colors ${
+          className={`flex-1 min-w-[120px] px-3 py-2 rounded text-sm font-medium transition-colors ${
             task.status === TaskStatus.DONE
               ? 'bg-gray-200 text-gray-700 hover:bg-gray-300'
               : 'bg-green-600 text-white hover:bg-green-700'
@@ -121,8 +121,8 @@ export default function TaskCard({ task, onTaskChange }: TaskCardProps) {
             : 'Mark Complete'}
         </button>
 
-        <Link href={`/tasks/${task.id}`}>
-          <button className="px-3 py-1 rounded text-sm font-medium bg-blue-600 text-white hover:bg-blue-700 transition-colors">
+        <Link href={`/tasks/${task.id}`} className="flex-1 min-w-[120px]">
+          <button className="w-full px-3 py-2 rounded text-sm font-medium bg-blue-600 text-white hover:bg-blue-700 transition-colors">
             View Details
           </button>
         </Link>
@@ -130,7 +130,7 @@ export default function TaskCard({ task, onTaskChange }: TaskCardProps) {
         <button
           onClick={handleDelete}
           disabled={isDeleting}
-          className="px-3 py-1 rounded text-sm font-medium bg-red-600 text-white hover:bg-red-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+          className="px-3 py-2 rounded text-sm font-medium bg-red-600 text-white hover:bg-red-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
         >
           {isDeleting ? 'Deleting...' : 'Delete'}
         </button>
