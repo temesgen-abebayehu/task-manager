@@ -75,7 +75,7 @@ Coming soon...
 ## Features
 
 - ✅ Create tasks with title, description, status, and due date (POST /tasks)
-- ⏳ View all tasks with filtering by status (GET /tasks)
+- ✅ View all tasks with filtering by status (GET /tasks)
 - ⏳ View single task details (GET /tasks/:id)
 - ⏳ Update task information (PATCH /tasks/:id)
 - ⏳ Delete tasks (DELETE /tasks/:id)
@@ -88,7 +88,8 @@ Coming soon...
 ## API Endpoints
 
 - ✅ `POST /tasks` - Create new task (IMPLEMENTED)
-- ⏳ `GET /tasks` - List all tasks (optional: `?status=TO_DO`)
+- ✅ `GET /tasks` - List all tasks with optional status filter (IMPLEMENTED)
+  - Query params: `?status=TO_DO` or `?status=IN_PROGRESS` or `?status=DONE`
 - ⏳ `GET /tasks/:id` - Get single task
 - ⏳ `PATCH /tasks/:id` - Update task
 - ⏳ `DELETE /tasks/:id` - Delete task
@@ -100,7 +101,8 @@ Coming soon...
 - ✅ Phase 2.1: NestJS Project Setup
 - ✅ Phase 2.2: Database Setup with Prisma
 - ✅ Phase 2.3: Create Task Endpoint
-- 🔄 Phase 2.4-2.10: Remaining Backend Endpoints
+- ✅ Phase 2.4: List All Tasks Endpoint
+- 🔄 Phase 2.5-2.10: Remaining Backend Endpoints
 - ⏳ Phase 3: Frontend Development (Next.js)
 - ⏳ Phase 4: Integration & Testing
 - ⏳ Phase 5: Deployment

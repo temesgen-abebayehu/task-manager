@@ -19,4 +19,15 @@ export class TasksService {
       },
     });
   }
+
+  async findAll(status?: TaskStatus): Promise<Task[]> {
+    const where = status ? { status } : {};
+
+    return this.prisma.task.findMany({
+      where,
+      orderBy: {
+        createdAt: 'desc',
+      },
+    });
+  }
 }
