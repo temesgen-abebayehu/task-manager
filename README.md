@@ -116,4 +116,4 @@ task-manager/
 
 ## License
 
-This project is for assessment purposes.
+MIT License
