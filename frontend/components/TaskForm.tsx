@@ -67,10 +67,10 @@ export default function TaskForm({
       };
 
       if (mode === 'edit' && initialValues?.id) {
-        await updateTask(initialValues.id, taskData);
+        await updateTask(initialValues.id, taskData as UpdateTaskInput);
         router.push(`/tasks/${initialValues.id}`);
       } else {
-        await createTask(taskData);
+        await createTask(taskData as CreateTaskInput);
         router.push('/tasks');
       }
     } catch (err: any) {
