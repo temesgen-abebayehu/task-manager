@@ -1,111 +1,118 @@
 # Task Manager
 
-A full-stack task management application built with Next.js and NestJS.
+A modern, full-stack task management application built with Next.js and NestJS.
+
+## Features
+
+- Create, read, update, and delete tasks
+- Track tasks through TO_DO, IN_PROGRESS, and DONE states
+- Filter tasks by status
+- Set and track due dates
+- Responsive design for desktop and mobile
+- Real-time UI updates
 
 ## Tech Stack
 
 ### Backend
-- **Framework**: NestJS
-- **Language**: TypeScript
-- **Database**: PostgreSQL
-- **ORM**: Prisma
-- **Validation**: class-validator, class-transformer
+- NestJS with TypeScript
+- PostgreSQL database
+- Prisma ORM
+- class-validator for validation
 
 ### Frontend
-- **Framework**: Next.js (App Router)
-- **Language**: TypeScript
-- **Styling**: Tailwind CSS
+- Next.js 16 (App Router)
+- TypeScript
+- Tailwind CSS
+
+## Getting Started
+
+### Prerequisites
+
+- Node.js 18+
+- PostgreSQL database
+- npm or yarn
+
+### Installation
+
+**1. Clone the repository**
+
+```bash
+git clone <repository-url>
+cd task-manager
+```
+
+**2. Backend Setup**
+
+```bash
+cd backend
+npm install
+
+# Set up environment variables
+cp .env.example .env
+# Edit .env and add your DATABASE_URL
+
+# Run database migrations
+npx prisma generate
+npx prisma migrate dev
+
+# Start backend server
+npm run start:dev
+```
+
+Backend runs at: `http://localhost:3001`
+
+**3. Frontend Setup**
+
+```bash
+cd frontend
+npm install
+
+# Start frontend server
+npm run dev
+```
+
+Frontend runs at: `http://localhost:3000`
+
+## API Endpoints
+
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| POST | `/tasks` | Create a new task |
+| GET | `/tasks` | List all tasks (optional status filter) |
+| GET | `/tasks/:id` | Get a single task |
+| PATCH | `/tasks/:id` | Update a task |
+| DELETE | `/tasks/:id` | Delete a task |
+| PATCH | `/tasks/:id/toggle-complete` | Toggle task completion |
+
+## Environment Variables
+
+**Backend (.env)**
+```env
+DATABASE_URL="postgresql://user:password@host:5432/taskmanager"
+PORT=3001
+```
+
+**Frontend (.env.local)** - Optional
+```env
+NEXT_PUBLIC_API_URL=http://localhost:3001
+```
 
 ## Project Structure
 
 ```
 task-manager/
-├── backend/          # NestJS API
+├── backend/              # NestJS API
 │   ├── src/
-│   │   ├── tasks/    # Tasks module
-│   │   ├── prisma/   # Prisma service
-│   │   └── filters/  # Global exception filters
-│   └── prisma/       # Database schema
-├── frontend/         # Next.js application
-└── README.md
+│   │   ├── tasks/       # Task endpoints & business logic
+│   │   ├── prisma/      # Database service
+│   │   └── filters/     # Error handling
+│   └── prisma/          # Database schema
+│
+└── frontend/            # Next.js application
+    ├── app/            # Pages (App Router)
+    ├── components/     # Reusable components
+    └── lib/            # API client & types
 ```
-
-## Getting Started
-
-### Prerequisites
-- Node.js (v18 or higher)
-- PostgreSQL database
-- npm or yarn
-
-### Backend Setup
-
-1. Navigate to backend directory:
-   ```bash
-   cd backend
-   ```
-
-2. Install dependencies:
-   ```bash
-   npm install
-   ```
-
-3. Set up environment variables:
-   - Copy `.env.example` to `.env`
-   - Update `DATABASE_URL` with your PostgreSQL credentials
-
-4. Set up database:
-   ```bash
-   npx prisma generate
-   npx prisma migrate dev --name init
-   ```
-
-5. Start the development server:
-   ```bash
-   npm run start:dev
-   ```
-
-   Backend will run at: `http://localhost:3001`
-
-See `backend/SETUP.md` for detailed API documentation.
-
-### Frontend Setup
-
-Coming soon...
-
-## Features
-
-- ✅ Create tasks with title, description, status, and due date (POST /tasks)
-- ✅ View all tasks with filtering by status (GET /tasks)
-- ⏳ View single task details (GET /tasks/:id)
-- ⏳ Update task information (PATCH /tasks/:id)
-- ⏳ Delete tasks (DELETE /tasks/:id)
-- ⏳ Toggle task completion status (PATCH /tasks/:id/toggle-complete)
-- ✅ Request validation with DTOs
-- ✅ Global validation pipe configured
-- ⏳ Global error handling
-- ✅ CORS enabled for frontend
-
-## API Endpoints
-
-- ✅ `POST /tasks` - Create new task (IMPLEMENTED)
-- ✅ `GET /tasks` - List all tasks with optional status filter (IMPLEMENTED)
-  - Query params: `?status=TO_DO` or `?status=IN_PROGRESS` or `?status=DONE`
-- ⏳ `GET /tasks/:id` - Get single task
-- ⏳ `PATCH /tasks/:id` - Update task
-- ⏳ `DELETE /tasks/:id` - Delete task
-- ⏳ `PATCH /tasks/:id/toggle-complete` - Toggle completion
-
-## Development Status
-
-- ✅ Phase 1: Project Setup
-- ✅ Phase 2.1: NestJS Project Setup
-- ✅ Phase 2.2: Database Setup with Prisma
-- ✅ Phase 2.3: Create Task Endpoint
-- ✅ Phase 2.4: List All Tasks Endpoint
-- 🔄 Phase 2.5-2.10: Remaining Backend Endpoints
-- ⏳ Phase 3: Frontend Development (Next.js)
-- ⏳ Phase 4: Integration & Testing
-- ⏳ Phase 5: Deployment
 
 ## License
 
